@@ -7,11 +7,63 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace AndroidVectorViewer {
-    public partial class Form1 : Form {
-        public Form1() {
+    public partial class MainForm : Form {
+
+        private static string NAMESPACE = "android:";
+
+        private static string DEBUG_FILE = "ic_about_perms_location.xml";
+        private string mFileDir;
+        public MainForm() {
             InitializeComponent();
+        }
+
+        private void Form1_Load( object sender, EventArgs e ) {
+            mFileDir = DEBUG_FILE;
+            readXML();
+        }
+
+        private void panel1_DragDrop( object sender, DragEventArgs e ) {
+            string[] files = (string[])e.Data.GetData( DataFormats.FileDrop );
+            string myfile = files[0] ;
+            foreach ( string file in files ) {
+                log( file );
+            }
+            mFileDir = myfile;
+
+            readXML();
+        }
+
+        private void panel_main_DragEnter( object sender, DragEventArgs e ) {
+            if ( e.Data.GetDataPresent( DataFormats.FileDrop ) ) e.Effect = DragDropEffects.Copy;
+        }
+
+        private void log(string line ) {
+            tb_debug.Text += line + "\r\n";
+        }
+
+        private void readXML() {
+            // parse the xml properties
+            XmlTextReader textReader = new XmlTextReader( mFileDir );
+            while ( textReader.Read() ) {
+                // Move to fist element  
+                textReader.MoveToElement();
+                if ( (textReader.NodeType == XmlNodeType.Element) && (textReader.Name == "vector") ) {
+                    if ( textReader.HasAttributes ) {
+                        log( "width: " + textReader.GetAttribute( NAMESPACE + "width" ) );
+                        log( "height: " + textReader.GetAttribute( NAMESPACE + "height" ) );
+                        log( "viewportWidth: " + textReader.GetAttribute( NAMESPACE + "viewportWidth" ) );
+                        log( "viewportHeight: " + textReader.GetAttribute( NAMESPACE + "viewportHeight" ) );
+                    }
+                }
+                if ( (textReader.NodeType == XmlNodeType.Element) && (textReader.Name == "path") ) {
+                    if ( textReader.HasAttributes ) {
+                        log( "path: " + textReader.GetAttribute( NAMESPACE + "pathData" ) );
+                    }
+                }
+            }
         }
     }
 }

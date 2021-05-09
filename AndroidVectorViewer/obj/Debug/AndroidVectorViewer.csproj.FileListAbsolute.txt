@@ -1,0 +1,10 @@
+C:\Users\admin\Desktop\programming\android_vector_viewer\AndroidVectorViewer\bin\Debug\AndroidVectorViewer.exe.config
+C:\Users\admin\Desktop\programming\android_vector_viewer\AndroidVectorViewer\bin\Debug\AndroidVectorViewer.exe
+C:\Users\admin\Desktop\programming\android_vector_viewer\AndroidVectorViewer\bin\Debug\AndroidVectorViewer.pdb
+C:\Users\admin\Desktop\programming\android_vector_viewer\AndroidVectorViewer\obj\Debug\AndroidVectorViewer.csprojAssemblyReference.cache
+C:\Users\admin\Desktop\programming\android_vector_viewer\AndroidVectorViewer\obj\Debug\AndroidVectorViewer.MainForm.resources
+C:\Users\admin\Desktop\programming\android_vector_viewer\AndroidVectorViewer\obj\Debug\AndroidVectorViewer.Properties.Resources.resources
+C:\Users\admin\Desktop\programming\android_vector_viewer\AndroidVectorViewer\obj\Debug\AndroidVectorViewer.csproj.GenerateResource.cache
+C:\Users\admin\Desktop\programming\android_vector_viewer\AndroidVectorViewer\obj\Debug\AndroidVectorViewer.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\programming\android_vector_viewer\AndroidVectorViewer\obj\Debug\AndroidVectorViewer.exe
+C:\Users\admin\Desktop\programming\android_vector_viewer\AndroidVectorViewer\obj\Debug\AndroidVectorViewer.pdb
