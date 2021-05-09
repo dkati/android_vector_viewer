@@ -16,6 +16,7 @@ namespace AndroidVectorViewer {
 
         private static string DEBUG_FILE = "ic_about_perms_location.xml";
         private string mFileDir;
+        private List<string> mDrawPaths = new List<string>();
         public MainForm() {
             InitializeComponent();
         }
@@ -60,10 +61,27 @@ namespace AndroidVectorViewer {
                 }
                 if ( (textReader.NodeType == XmlNodeType.Element) && (textReader.Name == "path") ) {
                     if ( textReader.HasAttributes ) {
-                        log( "path: " + textReader.GetAttribute( NAMESPACE + "pathData" ) );
+                        string tmpPath = textReader.GetAttribute( NAMESPACE + "pathData" );
+                        mDrawPaths.Add(tmpPath);
+                        log( "path: " + tmpPath );
+                        log( "path length (max 800): " + tmpPath.Length );
                     }
                 }
             }
+            // since file parse is done, start drawing
+            drawPath();
+        }
+        
+        private void drawPath() {
+            
+            foreach (String s in mDrawPaths ) {
+         
+
+                VectorDrawable vectorDrawable = new VectorDrawable( s );
+                vectorDrawable.draw( panel_main );
+                vectorDrawable.printToLog( tb_debug );
+            }
+            
         }
     }
 }
