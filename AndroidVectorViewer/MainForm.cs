@@ -23,7 +23,10 @@ namespace AndroidVectorViewer {
 
         private void Form1_Load( object sender, EventArgs e ) {
             mFileDir = DEBUG_FILE;
+
+           
             readXML();
+            panel_main.Invalidate();
         }
 
         private void panel1_DragDrop( object sender, DragEventArgs e ) {
@@ -76,8 +79,6 @@ namespace AndroidVectorViewer {
             
             // this foreach supports an xml with many <vector> paths
             foreach (String s in mDrawPaths ) {
-         
-
                 VectorDrawable vectorDrawable = new VectorDrawable( s );
                 vectorDrawable.draw( panel_main );
                 vectorDrawable.printToLog( tb_debug );
