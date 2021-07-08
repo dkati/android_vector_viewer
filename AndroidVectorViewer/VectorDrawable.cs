@@ -47,6 +47,9 @@ namespace AndroidVectorViewer {
             }
 
             // now start drawing
+            // it wont work since its called via the main constructor.
+            // so it builds,runs, paints , and the constructor calls onPaint() again.
+            // if you drag n drop an xml, it works
             Graphics g = p.CreateGraphics();
             Pen pen = new Pen( Color.Red,10 );
             SolidBrush b = new SolidBrush( Color.Red );
