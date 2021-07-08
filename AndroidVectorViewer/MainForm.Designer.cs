@@ -32,19 +32,21 @@
             this.lb_properties = new System.Windows.Forms.Label();
             this.tb_debug = new System.Windows.Forms.TextBox();
             this.lb_debug = new System.Windows.Forms.Label();
+            this.lb_mouse = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_main
             // 
             this.panel_main.AllowDrop = true;
-            this.panel_main.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.panel_main.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel_main.Location = new System.Drawing.Point(692, 12);
             this.panel_main.Name = "panel_main";
             this.panel_main.Size = new System.Drawing.Size(830, 830);
             this.panel_main.TabIndex = 0;
             this.panel_main.DragDrop += new System.Windows.Forms.DragEventHandler(this.panel1_DragDrop);
             this.panel_main.DragEnter += new System.Windows.Forms.DragEventHandler(this.panel_main_DragEnter);
+            this.panel_main.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel_main_MouseMove);
             // 
             // menuStrip1
             // 
@@ -68,13 +70,13 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.openToolStripMenuItem.Text = "Open";
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.saveAsToolStripMenuItem.Text = "Save as...";
             // 
             // tb_properties
@@ -111,11 +113,21 @@
             this.lb_debug.TabIndex = 5;
             this.lb_debug.Text = "Debug console";
             // 
+            // lb_mouse
+            // 
+            this.lb_mouse.AutoSize = true;
+            this.lb_mouse.Location = new System.Drawing.Point(584, 436);
+            this.lb_mouse.Name = "lb_mouse";
+            this.lb_mouse.Size = new System.Drawing.Size(35, 13);
+            this.lb_mouse.TabIndex = 6;
+            this.lb_mouse.Text = "label1";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1534, 849);
+            this.Controls.Add(this.lb_mouse);
             this.Controls.Add(this.lb_debug);
             this.Controls.Add(this.tb_debug);
             this.Controls.Add(this.lb_properties);
@@ -146,6 +158,7 @@
         private System.Windows.Forms.Label lb_properties;
         private System.Windows.Forms.TextBox tb_debug;
         private System.Windows.Forms.Label lb_debug;
+        private System.Windows.Forms.Label lb_mouse;
     }
 }
 

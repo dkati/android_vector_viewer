@@ -74,6 +74,7 @@ namespace AndroidVectorViewer {
         
         private void drawPath() {
             
+            // this foreach supports an xml with many <vector> paths
             foreach (String s in mDrawPaths ) {
          
 
@@ -83,5 +84,10 @@ namespace AndroidVectorViewer {
             }
             
         }
+
+        private void panel_main_MouseMove( object sender, MouseEventArgs e ) {
+            lb_mouse.Text = e.X + "," + e.Y;
+        }
+ 
     }
 }

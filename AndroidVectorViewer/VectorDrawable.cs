@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace AndroidVectorViewer {
     class VectorDrawable {
@@ -19,6 +22,8 @@ namespace AndroidVectorViewer {
         android:pathData=
         "M12,2C8.13,2 5,5.13 5,9c0,5.25 7,13 7,13s7,-7.75 7,-13c0,-3.87 -3.13,-7 -7,-7z
         M12,11.5c-1.38,0 -2.5,-1.12 -2.5,-2.5s1.12,-2.5 2.5,-2.5 2.5,1.12 2.5,2.5 -1.12,2.5 -2.5,2.5z" 
+
+            https://www.w3.org/TR/SVG/paths.html
         */
         public void draw(Panel p) {
 
@@ -40,7 +45,29 @@ namespace AndroidVectorViewer {
                     mCommandsImpl.Add( c );
                 }
             }
+
+            // now start drawing
+            Graphics g = p.CreateGraphics();
+            Pen pen = new Pen( Color.Red,10 );
+            SolidBrush b = new SolidBrush( Color.Red );
+            foreach ( VectorCommand s in mCommandsImpl ) {
+                if (s.getCommand() == 'C') {
+                    
+                    string[] splitted = s.getPath().ToString().Split( ' ' );
+                    Point[] points = new Point[splitted.Length];
+                    for (int k=0;k<splitted.Length;k++ ) {
+                        points[k] = new Point( 
+                            (int) Convert.ToDouble( splitted[k].Split( ',' )[0] ) * 24,
+                              (int)Convert.ToDouble( splitted[k].Split( ',' )[1] ) * 24 );
+                        Console.WriteLine(points[k].ToString() + "<----" );
+                    }
+                    g.DrawCurve( pen, points );
+                    break;
+                   
+                }
+            }
             
+
         }
 
         public void printToLog(TextBox tb ) {
